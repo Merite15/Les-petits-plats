@@ -22,7 +22,7 @@
     <div class="wrapper">
       <header class="header">
         <a
-          href="javascript:displayPopup('./doc/doc/popup.html',700,500,'menubar=no,status=no')"
+          href="#"
         >
           <img
             src="./assets/images/logo.svg"
@@ -89,25 +89,5 @@
     </div>
 
     <script src="./index.js" type="module"></script>
-    <script>
-      function displayPopup(page, largeur, hauteur, options) {
-        var top = (screen.height - hauteur) / 2;
-        var left = (screen.width - largeur) / 2;
-        window.open(
-          page,
-          "",
-          "top=" +
-            top +
-            ",left=" +
-            left +
-            ",width=" +
-            largeur +
-            ",height=" +
-            hauteur +
-            "," +
-            options
-        );
-      }
-    </script>
   </body>
 </html>
