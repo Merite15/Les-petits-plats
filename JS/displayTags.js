@@ -101,14 +101,14 @@ export const showListOfTags = function (arrayOfTags, data) {
   let tag_HTML = "";
 
   arrayOfTags.forEach((tag, index, data) => {
-    tag_HTML += `<span class="tags__item tags__item--${tag.color}">
-    <span  class="tags__name">${tag.title}</span>
+    tag_HTML += `<span class="recipe-tags__item recipe-tags__item--${tag.color}">
+    <span  class="recipe-tags__name">${tag.title}</span>
     <span id="${index}" class="tags__close">
     <img src="./assets/images/remove-icon.png" alt=""
     /></span>
     </span>`;
   });
-  document.querySelector(".tags").innerHTML = tag_HTML;
+  document.querySelector(".recipe-tags").innerHTML = tag_HTML;
 
   listenToTags(data);
 };

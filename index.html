@@ -26,18 +26,17 @@
     </header>
 
     <main class="main">
-      <section class="search">
-        <div class="search__input-group">
-          <label for="search_input" style="display: none;"> Recherchez</label>
-          <input type="text" id="search_input" class="search__input"
-            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette...">
-          <button class="search__button">
-            <img src="./assets/images/loupe.svg" alt="Go further">
+      <section>
+        <div class="recipe-search">
+          <input type="text" class="recipe-search__input"
+            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..." />
+          <button class="recipe-search__button">
+            <img src="./assets/images/loupe.svg" alt="Go further" />
           </button>
         </div>
       </section>
 
-      <section class="tags">
+      <section class="recipe-tags">
         <!-- ARRAY OF TAGS EN JAVASCRIPT -->
       </section>
 
@@ -46,25 +45,25 @@
           <span class="filter__custom-arrow"></span>
           <input class="filter__select filter__select--primary" type="button" data-color="primary"
             data-value="Ingrédients" value="Ingrédients">
-          <!-- UL et LI COMPONENT JAVASCRIPT  -->
+
         </div>
 
         <div class="filter__custom-select">
           <span class="filter__custom-arrow"></span>
           <input class="filter__select filter__select--success" type="button" data-color="success" data-value="Appareil"
             value="Appareil">
-          <!-- UL et LI COMPONENT JAVASCRIPT  -->
+
         </div>
 
         <div class="filter__custom-select">
           <span class="filter__custom-arrow"></span>
           <input class="filter__select filter__select--danger" type="button" data-color="danger" data-value="Ustensiles"
             value="Ustensiles">
-          <!-- UL et LI COMPONENT JAVASCRIPT  -->
+
         </div>
       </section>
+
       <section class="cards">
-        <!-- CARDS COMPONENT JAVASCRIPT DISPLAY CARDS.JS -->
       </section>
     </main>
   </div>

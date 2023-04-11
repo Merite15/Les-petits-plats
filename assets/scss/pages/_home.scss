@@ -1,0 +1,19 @@
+/* header section */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  a {
+    width: 201px;
+  }
+}
+
+// responsive
+@media only screen and (min-width: 992px) {
+  .wrapper {
+      width: 86%;
+      margin: auto;
+  }
+}
