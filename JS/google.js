@@ -59,10 +59,8 @@ export let IS_GOOGLE = (recipes) => {
   takeIt.addEventListener("input", () => {
     // si le nombre de lettre dépasse 2 alors :  LANCER ALGO
     if (takeIt.value.length > 2) {
-      //   console.log(takeIt.value);
       const googledRecipes = theMillTurns(recipes, takeIt.value);
       const googledRecipesDistinct = deleteDuplicatesGoogled(googledRecipes);
-      // console.log(googledRecipesDistinct);
       cards.DISPLAY_CARDS(googledRecipesDistinct);
       filters.DISPLAY_FILTERS(googledRecipesDistinct);
       isFilterReload(recipes);
@@ -95,7 +93,6 @@ export let IS_TAGGED = (recipes) => {
     input.addEventListener("input", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      // console.log(e);
 
       // ON VIDE LE TABLEAU DES TAGS
       while (tagsArray.length > 0) {

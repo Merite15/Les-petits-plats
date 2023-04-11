@@ -70,7 +70,6 @@ export const isFilterReload = (renderRecipes.prototype.isFilterClosed = (
 
       // SUPPRESSION DES PRÉCÉDENTES UL CONTENANT LES LI
       document.querySelectorAll(".filter__custom-menu").forEach((ul) => {
-        // console.log(ul);
         ul.remove();
       });
       // HYDRATE LES LI AVEC LA NOUVELLE RECHERCHE

@@ -35,7 +35,6 @@ const tagIsNone = (e) => {
       let distinctFilteredRecipes = deleteDuplicatesGoogled(
         theMillTurns(tagReload[0], item.title)
       );
-      console.log(distinctFilteredRecipes);
       tagReload[0] = [...distinctFilteredRecipes];
     });
     isFilterReload(tagReload[0]);
@@ -57,13 +56,11 @@ export const listenFilter = (data, keywordlist) => {
       let inTagsArray = false;
 
       tagsArray.forEach((tag) => {
-        // console.log(tag);
         inTagsArray = tag.title === tagObject.title;
       });
 
       if (!inTagsArray) {
         // AU CLICK LES LI DEVIENT UN TAG AFFICHé
-        // console.log(originalRecipes);
         tagsArray.push(tagObject);
         showListOfTags(tagsArray, data);
 
@@ -107,7 +104,7 @@ export const showListOfTags = function (arrayOfTags, data) {
     tag_HTML += `<span class="tags__item tags__item--${tag.color}">
     <span  class="tags__name">${tag.title}</span>
     <span id="${index}" class="tags__close">
-    <img src="./assets/image/remove-icon.png" alt=""
+    <img src="./assets/images/remove-icon.png" alt=""
     /></span>
     </span>`;
   });

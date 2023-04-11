@@ -1,0 +1,23 @@
+{
+  "name": "les-petits-plats",
+  "version": "1.0.0",
+  "description": "Implémentez un algorithme de recherche de recettes de cuisines pour le site **Les Petits Plats** grâce à des outils et méthodes avancées de Javascript.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./assets/sass/index.scss:./assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Merite15/Les-petits-plats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Merite15/Les-petits-plats/issues"
+  },
+  "homepage": "https://github.com/Merite15/Les-petits-plats#readme"
+}

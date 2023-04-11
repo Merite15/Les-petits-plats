@@ -2,7 +2,7 @@ import * as index from "../index.js";
 
 // Get data
 export const GET_RECIPES = (async () => {
-  await fetch("./recipes.json")
+  await fetch("./data/recipes.json")
     .then((response) => {
       return response.json();
     })

@@ -165,7 +165,7 @@ body {
 }
 
 .filter__custom-arrow::before {
-  content: url("../assets/image/dropdown-icon-up.png");
+  content: url("../images/dropdown-icon-up.png");
 }
 
 .filter__custom-menu {
@@ -314,7 +314,7 @@ body {
 }
 
 .card__timeclock {
-  content: url("../assets/image/time.svg");
+  content: url("../images/time.svg");
 }
 
 .card__time {
