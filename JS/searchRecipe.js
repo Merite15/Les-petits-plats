@@ -2,10 +2,10 @@ import * as cards from "./displayCards.js";
 import * as filters from "./displayFilters.js";
 import { showListOfTags, tagsArray } from "./displayTags.js";
 import { isFilterReload } from "./openCloseFilters.js";
-import { deleteDuplicatesGoogled } from "./utils.js";
+import { removeDuplicatedSearch } from "./utils.js";
 
-export let theMillTurns = (recipes, filter) => {
-  let googledCards = [];
+export let searchRecipe = (recipes, filter) => {
+  let searchCards = [];
 
   recipes.map((recipe) => {
     if (
@@ -21,16 +21,13 @@ export let theMillTurns = (recipes, filter) => {
         .trim()
         .includes(filter.toLowerCase().trim())
     ) {
-      googledCards.push(recipe);
-      //   console.log(cards);
+      searchCards.push(recipe);
     }
 
     // un ustensil ?
     recipe.ustensils.filter((elt) => {
-      //   console.log(elt, filter);
       if (elt.toLowerCase().includes(filter.toLowerCase())) {
-  
-        googledCards.push(recipe);
+        searchCards.push(recipe);
       }
     });
 
@@ -42,25 +39,24 @@ export let theMillTurns = (recipes, filter) => {
           .trim()
           .includes(filter.toLowerCase().trim())
       ) {
-        // console.log(recipe);
 
-        googledCards.push(recipe);
+        searchCards.push(recipe);
       }
     });
   });
-  return googledCards;
+  return searchCards;
 };
 
 // LISTEN INPUT BARRE DE RECHERCHE
-export let IS_GOOGLE = (recipes) => {
+export let IS_SEARCHED = (recipes) => {
   const takeIt = document.querySelector(".search__input");
 
   takeIt.addEventListener("input", () => {
     // si le nombre de lettre dépasse 2 alors :  LANCER ALGO
     if (takeIt.value.length > 2) {
-      const googledRecipes = theMillTurns(recipes, takeIt.value);
+      const googledRecipes = searchRecipe(recipes, takeIt.value);
 
-      const googledRecipesDistinct = deleteDuplicatesGoogled(googledRecipes);
+      const googledRecipesDistinct = removeDuplicatedSearch(googledRecipes);
 
       cards.DISPLAY_CARDS(googledRecipesDistinct);
 

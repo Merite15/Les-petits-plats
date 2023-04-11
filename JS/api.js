@@ -7,7 +7,7 @@ export const GET_RECIPES = (async () => {
       return response.json();
     })
     .then((data) => {
-      index.GET_RECIPES_HYDRATE(data.recipes);
+      index.GET_RECIPES(data.recipes);
 
     })
     .catch((error) => {

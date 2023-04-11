@@ -1,8 +1,7 @@
 import * as cards from "./displayCards.js";
-import { DISPLAY_FILTERS } from "./displayFilters.js";
-import { theMillTurns } from "./google.js";
+import { searchRecipe } from "./searchRecipe.js";
 import { isFilterReload } from "./openCloseFilters.js";
-import { deleteDuplicatesGoogled, windowLocationReload } from "./utils.js";
+import { removeDuplicatedSearch, windowLocationReload } from "./utils.js";
 import { DISPLAY_CARDS } from "./displayCards.js";
 
 var originalRecipes = [];
@@ -31,8 +30,8 @@ const tagIsNone = (e) => {
     let tagReload = [];
     tagReload.push(originalRecipes[0]);
     tagsArray.forEach((item) => {
-      let distinctFilteredRecipes = deleteDuplicatesGoogled(
-        theMillTurns(tagReload[0], item.title)
+      let distinctFilteredRecipes = removeDuplicatedSearch(
+        searchRecipe(tagReload[0], item.title)
       );
       tagReload[0] = [...distinctFilteredRecipes];
     });
@@ -42,16 +41,16 @@ const tagIsNone = (e) => {
   showListOfTags(tagsArray);
 };
 
-export const listenFilter = (data, keywordlist) => {
+export const listenFilter = (data, keywords) => {
   originalRecipes.push(data);
 
-  for (const keyword of keywordlist) {
+  for (const keyword of keywords) {
     keyword.addEventListener("click", () => {
       let dataTitle = keyword.textContent;
       let dataColor = keyword.getAttribute("data-color");
       let tagObject = { title: `${dataTitle}`, color: `${dataColor}` };
 
-      // VÉRIFIE SI LE TAG EST PRESENT pour éviter doublons OU lancer algo
+      // Vérifie si le tag est présent pour éviter doublons OU lancer algo
       let inTagsArray = false;
 
       tagsArray.forEach((tag) => {
@@ -59,15 +58,14 @@ export const listenFilter = (data, keywordlist) => {
       });
 
       if (!inTagsArray) {
-        // AU CLICK LES LI DEVIENT UN TAG AFFICHé
-        // console.log(originalRecipes);
+        // affichage des tags
         tagsArray.push(tagObject);
         showListOfTags(tagsArray, data);
 
-        //ON FAIT LA RECHERCHE SUR CHAQUE TAG
+        //recherche sur chaque tag
         tagsArray.forEach((item) => {
-          distinctFilteredRecipes = deleteDuplicatesGoogled(
-            theMillTurns(data, item.title)
+          distinctFilteredRecipes = removeDuplicatedSearch(
+            searchRecipe(data, item.title)
           );
           data = [...distinctFilteredRecipes];
         });
@@ -98,7 +96,6 @@ export const listenFilter = (data, keywordlist) => {
 };
 
 export const showListOfTags = function (arrayOfTags, data) {
-  // console.log(data);
   let tag_HTML = "";
 
   arrayOfTags.forEach((tag, index, data) => {
@@ -113,4 +110,3 @@ export const showListOfTags = function (arrayOfTags, data) {
 
   listenToTags(data);
 };
-// console.log(originalRecipes);

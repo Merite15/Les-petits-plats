@@ -1,4 +1,4 @@
-// MELANGER LES ELEMENTS D'UN TABLEAU
+// MÉLANGER LES ELEMENTS D'UN TABLEAU
 export const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
@@ -25,15 +25,13 @@ export const deleteDuplicates = (array) => {
   });
 };
 
-// METTRE LA PREMIERE LETTRE EN LETTRE CAPITALE
+// Mettre la premiere lettre en majuscule
 export const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
 // RELOAD window.location.reload
 export const windowLocationReload = () => {
-  // window.location.reload();
-
 };
 
 // CLOSE TAGS
@@ -47,12 +45,10 @@ export const tagIsNonePrimary = () => {
   document.getElementsByClassName("tags__item--primary").style.display = "none";
 };
 
-export const deleteDuplicatesGoogled = (array) => {
+export const removeDuplicatedSearch = (array) => {
   let cleanDuplicate = [];
   array.forEach((item) => {
-    // console.log(item.id);
     cleanDuplicate.indexOf(item) == -1 ? cleanDuplicate.push(item) : "";
   });
-  // console.log(cleanDuplicate);
   return cleanDuplicate;
 };

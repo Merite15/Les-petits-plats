@@ -46,7 +46,6 @@ export const displayFilterAppliance =
       );
     }
     // SANS RECHERCHE
-    // console.log(distinctAppliance);
     return distinctAppliance;
   });
 
@@ -84,7 +83,6 @@ const list_HTML = (renderRecipes.prototype.getList_HTML = (
       setLi
     )}</li>`;
   });
-  // console.log(li_HTML);
   return li_HTML;
 });
 
