@@ -1,3 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap");
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+ol[class],
+ul[class] {
+  padding: 0;
+}
+
+blockquote,
+body,
+dd,
+dl,
+figcaption,
+figure,
+h1,
+h2,
+h3,
+h4,
+li,
+ol[class],
+p,
+ul[class] {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+ol[class],
+ul[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 70%;
+}
+
 :root {
   --light-grey: #e7e7e7;
   --dark-grey: #c7bebe;
@@ -10,13 +211,10 @@
   --br-5: 5px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap');
-
 body {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   font-size: 70%;
 }
-
 
 @media only screen and (min-width: 992px) {
   .wrapper {
@@ -24,7 +222,6 @@ body {
     margin: auto;
   }
 }
-
 /* header section */
 .header {
   width: 100%;
@@ -32,6 +229,7 @@ body {
   justify-content: center;
   margin-top: 20px;
 }
+
 .header__logo {
   width: 201px;
 }
@@ -69,7 +267,6 @@ body {
 }
 
 /* tags section */
-
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -84,15 +281,19 @@ body {
   color: #fff;
   padding: 10px 20px;
 }
+
 .tags__item--danger {
   background: var(--danger);
 }
+
 .tags__item--success {
   background: var(--success);
 }
+
 .tags__item--primary {
   background: var(--primary);
 }
+
 .tags__name {
   margin-right: 13px;
 }
@@ -110,14 +311,13 @@ body {
     gap: 20px;
   }
 }
-
 .filter__custom-select {
   position: relative;
   cursor: pointer;
   width: 170px;
 }
 
-.filter__custom-select input[type="text"]::placeholder {
+.filter__custom-select input[type=text]::placeholder {
   color: #fff;
   opacity: 0.5;
 }
@@ -166,7 +366,7 @@ body {
 }
 
 .filter__custom-arrow::before {
-  content: url("../assets/image/dropdown-icon-up.png");
+  content: url("../images/dropdown-icon-up.png");
 }
 
 .filter__custom-menu {
@@ -227,6 +427,7 @@ body {
   background: grey;
   transition: 300ms;
 }
+
 .filter__custom-option::after {
   content: "";
   width: 0px;
@@ -248,6 +449,7 @@ body {
   width: 95%;
   margin: 20px auto;
 }
+
 @media only screen and (min-width: 674px) {
   .cards {
     grid-template-columns: 1fr 1fr;
@@ -278,6 +480,7 @@ body {
   font-size: var(--fs-18);
   color: rgb(49, 49, 49);
 }
+
 .card {
   height: 364px;
   background: var(--light-grey);
@@ -315,7 +518,7 @@ body {
 }
 
 .card__timeclock {
-  content: url("../assets/image/time.svg");
+  content: url("../images/time.svg");
 }
 
 .card__time {
@@ -350,3 +553,5 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/*# sourceMappingURL=style.css.map */
