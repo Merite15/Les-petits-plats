@@ -1,4 +1,8 @@
-// La méthode map() pour modifier, alterner ou utiliser les données, est préférable car elle renvoie un nouveau tableau avec les données transformées.
+// Higher Order Functions in JavaScript
+
+// Vitesse et performance :
+
+// La methode map() pour modifier, alterner ou utiliser les données, est préférable car elle renvoie un nouveau tableau avec les données transformées.
 
 let filterFunc = "bol";
 
