@@ -1,7 +1,7 @@
 import { renderRecipes } from "./api.js";
 import { capitalize } from "./utils.js";
 
-// CARD COMPONENT
+// CARDS COMPONENT
 export const DISPLAY_CARDS = (renderRecipes.prototype.displayCards = function (
   recipes
 ) {
@@ -22,6 +22,7 @@ export const DISPLAY_CARDS = (renderRecipes.prototype.displayCards = function (
   }
 
   recipes.forEach((recipe) => {
+    // console.log(recipe);
     let listCard_HTML = "";
 
     recipe.ingredients.map((elt) => {

@@ -1,6 +1,4 @@
-
-
-// MÉLANGER LES ELEMENTS D'UN TABLEAU
+// MELANGER LES ELEMENTS D'UN TABLEAU
 export const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
@@ -34,6 +32,8 @@ export const capitalize = (str) => {
 
 // RELOAD window.location.reload
 export const windowLocationReload = () => {
+  // window.location.reload();
+
 };
 
 // CLOSE TAGS
@@ -50,7 +50,9 @@ export const tagIsNonePrimary = () => {
 export const deleteDuplicatesGoogled = (array) => {
   let cleanDuplicate = [];
   array.forEach((item) => {
+    // console.log(item.id);
     cleanDuplicate.indexOf(item) == -1 ? cleanDuplicate.push(item) : "";
   });
+  // console.log(cleanDuplicate);
   return cleanDuplicate;
 };

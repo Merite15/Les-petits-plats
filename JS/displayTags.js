@@ -11,7 +11,7 @@ var distinctFilteredRecipes = [];
 export var tagsArray = [
 ];
 
-// LISTE DES TAGS
+// LISTER LES TAGS
 const listenToTags = function (data) {
   document.querySelectorAll(".tags__close").forEach((X) => {
     X.addEventListener("click", tagIsNone);
@@ -25,7 +25,6 @@ const tagIsNone = (e) => {
   tagsArray.splice(ID, 1);
 
   if (tagsArray.length === 0) {
-    document.querySelector(".search__input").value = '';
     DISPLAY_CARDS(originalRecipes[0]);
     isFilterReload(originalRecipes[0]);
   } else if (tagsArray.length >= 1) {
@@ -35,7 +34,6 @@ const tagIsNone = (e) => {
       let distinctFilteredRecipes = deleteDuplicatesGoogled(
         theMillTurns(tagReload[0], item.title)
       );
-      console.log(distinctFilteredRecipes);
       tagReload[0] = [...distinctFilteredRecipes];
     });
     isFilterReload(tagReload[0]);
@@ -57,7 +55,6 @@ export const listenFilter = (data, keywordlist) => {
       let inTagsArray = false;
 
       tagsArray.forEach((tag) => {
-        // console.log(tag);
         inTagsArray = tag.title === tagObject.title;
       });
 
@@ -101,6 +98,7 @@ export const listenFilter = (data, keywordlist) => {
 };
 
 export const showListOfTags = function (arrayOfTags, data) {
+  // console.log(data);
   let tag_HTML = "";
 
   arrayOfTags.forEach((tag, index, data) => {
@@ -115,3 +113,4 @@ export const showListOfTags = function (arrayOfTags, data) {
 
   listenToTags(data);
 };
+// console.log(originalRecipes);

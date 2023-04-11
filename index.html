@@ -1,97 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="Les petits plats, outil de recherche des recettes de cuisine"
+      name="description"
+    />
+    <meta
+      content="Les petits plats, outil de recherche des recettes de cuisine"
+      name="keywords"
+    />
+    <link rel="icon" href="./assets/image/icone.svg" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta content="Les petits plats, outil de recettes de cuisine" name="description">
-  <meta content="Les petits plats, outil de recettes de cuisine" name="keywords">
-  <link rel="icon" href="./assets/image/icone.svg">
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="./style/reset.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Les petits plats</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a
+          class="header__brand"
+          href="javascript:displayPopup('./assets/doc/popup.html',700,500,'menubar=no,status=no')"
+        >
+          <img
+            src="./assets/image/logo.svg"
+            class="header__logo"
+            alt="Logo : Les petits plats"
+          />
+        </a>
+      </header>
 
-  <!-- Reset CSS -->
-  <link rel="stylesheet" href="./style/reset.css">
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="./style/style.css">
+      <main class="main">
+        <section class="search">
+          <div class="search__input-group">
+            <input
+              type="text"
+              class="search__input"
+              placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..."
+            />
+            <button class="search__button">
+              <img src="./assets/image/loupe.svg" alt="Go further" />
+            </button>
+          </div>
+        </section>
 
-  <title>Le Petit Chef</title>
-</head>
+        <section class="tags">
+          <!-- ARRAY OF TAGS EN JAVASCRIPT -->
+        </section>
 
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <a class="header__brand" href="javascript:PopupCentrer('./assets/doc/popup.html',700,500,'menubar=no,status=no')">
-        <h1>
-          <img src="./assets/image/logo.svg" class="header__logo" alt="Logo : Les petits plats">
-        </h1>
-      </a>
-    </header>
+        <section class="filter">
+          <div class="filter__custom-select">
+            <span class="filter__custom-arrow"></span>
+            <input
+              class="filter__select filter__select--primary"
+              type="button"
+              data-color="primary"
+              data-value="Ingrédients"
+              value="Ingrédients"
+            />
+            <!-- UL et LI COMPONENT JAVASCRIPT  -->
+          </div>
 
-    <main class="main">
-      <section class="search">
-        <div class="search__input-group">
-          <label for="search_input" style="display: none;"> Recherchez</label>
-          <input type="text" id="search_input" class="search__input"
-            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette...">
-          <button class="search__button">
-            <img src="./assets/image/loupe.svg" alt="Go further">
-          </button>
-        </div>
-      </section>
+          <div class="filter__custom-select">
+            <span class="filter__custom-arrow"></span>
+            <input
+              class="filter__select filter__select--success"
+              type="button"
+              data-color="success"
+              data-value="Appareil"
+              value="Appareil"
+            />
+            <!-- UL et LI COMPONENT JAVASCRIPT  -->
+          </div>
 
-      <section class="tags">
-        <!-- ARRAY OF TAGS EN JAVASCRIPT -->
-      </section>
+          <div class="filter__custom-select">
+            <span class="filter__custom-arrow"></span>
+            <input
+              class="filter__select filter__select--danger"
+              type="button"
+              data-color="danger"
+              data-value="Ustensiles"
+              value="Ustensiles"
+            />
+            <!-- UL et LI COMPONENT JAVASCRIPT  -->
+          </div>
+        </section>
+        <section class="cards">
+          <!-- CARDS COMPONENT JAVASCRIPT DISPLAY CARDS-->
+        </section>
+      </main>
+    </div>
 
-      <section class="filter">
-        <div class="filter__custom-select">
-          <span class="filter__custom-arrow"></span>
-          <input class="filter__select filter__select--primary" type="button" data-color="primary"
-            data-value="Ingrédients" value="Ingrédients">
-          <!-- UL et LI COMPONENT JAVASCRIPT  -->
-        </div>
-
-        <div class="filter__custom-select">
-          <span class="filter__custom-arrow"></span>
-          <input class="filter__select filter__select--success" type="button" data-color="success" data-value="Appareil"
-            value="Appareil">
-          <!-- UL et LI COMPONENT JAVASCRIPT  -->
-        </div>
-
-        <div class="filter__custom-select">
-          <span class="filter__custom-arrow"></span>
-          <input class="filter__select filter__select--danger" type="button" data-color="danger" data-value="Ustensiles"
-            value="Ustensiles">
-          <!-- UL et LI COMPONENT JAVASCRIPT  -->
-        </div>
-      </section>
-      <section class="cards">
-        <!-- CARDS COMPONENT JAVASCRIPT DISPLAY CARDS.JS -->
-      </section>
-    </main>
-  </div>
-
-  <script src="./index.js" type="module"></script>
-  <script>
-    function PopupCentrer(page, largeur, hauteur, options) {
-      var top = (screen.height - hauteur) / 2;
-      var left = (screen.width - largeur) / 2;
-      window.open(
-        page,
-        "",
-        "top=" +
-        top +
-        ",left=" +
-        left +
-        ",width=" +
-        largeur +
-        ",height=" +
-        hauteur +
-        "," +
-        options
-      );
-    }
-  </script>
-</body>
-
+    <script src="./index.js" type="module"></script>
+    <script>
+      function displayPopup(page, largeur, hauteur, options) {
+        var top = (screen.height - hauteur) / 2;
+        var left = (screen.width - largeur) / 2;
+        window.open(
+          page,
+          "",
+          "top=" +
+            top +
+            ",left=" +
+            left +
+            ",width=" +
+            largeur +
+            ",height=" +
+            hauteur +
+            "," +
+            options
+        );
+      }
+    </script>
+  </body>
 </html>

@@ -7,7 +7,7 @@ import * as filters from "./JS/displayFilters.js";
 import * as openclosefilters from "./JS/openCloseFilters.js";
 import * as google from "./JS/google.js";
 
-// RÉCUPÈRE LA DATA ET HYDRATE LES COMPOSANTS
+// RECUPERE LA DATA ET HYDRATE LES COMPOSANTS
 export const GET_RECIPES_HYDRATE = (renderRecipes.prototype.getAllRecipes =
   function (recipes) {
     // console.log(recipes);

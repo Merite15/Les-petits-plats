@@ -5,7 +5,6 @@ import { listenFilter } from "./displayTags.js";
 // NEW SET : distinct INGREDIENTS
 export const displayFilterIngredients =
   (renderRecipes.prototype.displayFilterIngredients = function (data, filter) {
-    // console.log(data, filter);
 
     const distinctIngredients = [
       ...new Set(
@@ -22,11 +21,12 @@ export const displayFilterIngredients =
 
     // SI RECHERCHE DANS INPUT....
     if (filter) {
+
       return distinctIngredients.filter((ingredient) =>
         ingredient.includes(filter.toLowerCase().trim())
       );
     }
-    // SANS RECHERCHE
+    // PAS DE RECHERCHE
     return utils.shuffle(distinctIngredients);
   });
 
@@ -46,13 +46,13 @@ export const displayFilterAppliance =
       );
     }
     // SANS RECHERCHE
+    // console.log(distinctAppliance);
     return distinctAppliance;
   });
 
-// NEW SET : distinct ustensiles
+// NEW SET : distinct USTENSILS
 export const displayFilterUstensils =
   (renderRecipes.prototype.displayFilterUstensils = function (data, filter) {
-    // console.log(data);
     const distinctUstensils = [
       ...new Set(
         data
@@ -84,6 +84,7 @@ const list_HTML = (renderRecipes.prototype.getList_HTML = (
       setLi
     )}</li>`;
   });
+  // console.log(li_HTML);
   return li_HTML;
 });
 
@@ -137,14 +138,11 @@ export const DISPLAY_FILTERS = (renderRecipes.displayFilters = function (
   color
 ) {
   if (btn && filter && value && color) {
-    // console.log(data, btn, filter, value, color);
     hydrateFilter(data, value, btn, color, filter);
   } else if (data) {
     document.querySelectorAll(".filter__select").forEach((button) => {
       let value = button.getAttribute("value");
       let datacolor = button.getAttribute("data-color");
-
-      // console.log(data, value, button, datacolor);
       hydrateFilter(data, value, button, datacolor);
     });
   }
