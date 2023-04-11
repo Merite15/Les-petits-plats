@@ -1803,11 +1803,6 @@ let displayFilterIngredients = function (data, filter) {
 
   // SI RECHERCHE DANS INPUT....
   if (filter) {
-    // console.log(
-    //   distinctIngredients.filter((ingredient) =>
-    //     ingredient.includes(filter.toLowerCase().trim())
-    //   )
-    // );
     return distinctIngredients.filter((ingredient) =>
       ingredient.includes(filter.toLowerCase().trim())
     );
@@ -1818,7 +1813,7 @@ let displayFilterIngredients = function (data, filter) {
 
 // NEW SET : distinct APPLIANCE
 let displayFilterAppliance = function (data, filter) {
-  // console.log(data);
+
   const distinctAppliance = [
     ...new Set(
       data.map((recipe) => recipe.appliance.toLowerCase().trim()).sort()
@@ -1832,13 +1827,12 @@ let displayFilterAppliance = function (data, filter) {
     );
   }
   // SANS RECHERCHE
-  // console.log(distinctAppliance);
   return distinctAppliance;
 };
 
 // NEW SET : distinct USTENSILS
 let displayFilterUstensils = function (data, filter) {
-  // console.log(data);
+
   const distinctUstensils = [
     ...new Set(
       data
@@ -1860,11 +1854,10 @@ let displayFilterUstensils = function (data, filter) {
 };
 
 let theMillTurnsFunc = (recipes, filter) => {
-  //   console.log(recipes, filter);
   let googledCards = [];
 
   recipes.map((recipe) => {
-    // console.log(recipe);
+
     if (
       // une recette ?
       recipe.name.toLowerCase().trim().includes(filter.toLowerCase().trim()) ||
@@ -1879,7 +1872,6 @@ let theMillTurnsFunc = (recipes, filter) => {
         .includes(filter.toLowerCase().trim())
     ) {
       googledCards.push(recipe);
-      //   console.log(cards);
     }
     // un ustensil ?
     recipe.ustensils.map((ustensil) => {
@@ -1900,16 +1892,8 @@ let theMillTurnsFunc = (recipes, filter) => {
       }
     });
   });
-  //   console.log(cards);
   return googledCards;
 };
-
-console.log(
-  theMillTurnsFunc(recipesFunc, filterFunc),
-  displayFilterUstensils(recipesFunc, filterFunc),
-  displayFilterAppliance(recipesFunc, filterFunc),
-  displayFilterIngredients(recipesFunc, filterFunc)
-);
 
 theMillTurnsFunc(recipesFunc, filterFunc);
 displayFilterUstensils(recipesFunc, filterFunc);

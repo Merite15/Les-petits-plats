@@ -1,0 +1,30 @@
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  gap: 10px;
+
+  &__name{
+    margin-right: 13px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius;
+    color: #fff;
+    padding: 10px 20px;
+
+    &--danger{
+      background: $danger-color;
+    }
+
+    &--success{
+      background: $success-color;
+    }
+
+    &--primary{
+      background: $primary-color;
+    }
+  }
+}

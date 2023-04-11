@@ -1,0 +1,31 @@
+/* search section */
+.recipe-search {
+    position: relative;
+    overflow: hidden;
+    margin-top: 16px;
+
+    &__input {
+        background: $light-grey;
+        border: none;
+        padding: 16px;
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &::placeholder {
+            color: #000;
+            opacity: 0.25;
+            font-size: $font-medium;
+            width: 80%;
+        }
+    }
+
+    &__button{
+        background: transparent;
+        border: none;
+        position: absolute;
+        right: 8px;
+        top: 0;
+        height: 100%;
+    }
+}

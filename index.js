@@ -28,6 +28,6 @@ buttons.forEach((btn) => {
 
 // Effacer l'entrée après le rechargement
 window.onload = function() {
-  document.querySelector(".search__input").value = '';
+  document.querySelector(".recipe-search__input").value = '';
   }
 

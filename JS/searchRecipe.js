@@ -49,7 +49,7 @@ export let searchRecipe = (recipes, filter) => {
 
 // LISTEN INPUT BARRE DE RECHERCHE
 export let IS_SEARCHED = (recipes) => {
-  const takeIt = document.querySelector(".search__input");
+  const takeIt = document.querySelector(".recipe-search__input");
 
   takeIt.addEventListener("input", () => {
     // si le nombre de lettre dépasse 2 alors :  LANCER ALGO
@@ -67,7 +67,7 @@ export let IS_SEARCHED = (recipes) => {
       // SINON TABLEAU DES RECETTES
       cards.DISPLAY_CARDS(recipes);
       isFilterReload(recipes);
-      // on vide me tableau des tags
+      // on vide me tableau des recipe-tags
       while (tagsArray.length > 0) {
         tagsArray.pop();
       }

@@ -14,8 +14,6 @@
     />
     <link rel="icon" href="./assets/images/icone.svg" />
 
-    <!-- Reset CSS -->
-    <link rel="stylesheet" href="./assets/css/reset.css" />
     <!-- Style CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Les petits plats</title>
@@ -24,31 +22,30 @@
     <div class="wrapper">
       <header class="header">
         <a
-          href="javascript:displayPopup('./assets/doc/popup.html',700,500,'menubar=no,status=no')"
+          href="javascript:displayPopup('./doc/doc/popup.html',700,500,'menubar=no,status=no')"
         >
           <img
             src="./assets/images/logo.svg"
-            class="header__logo"
             alt="Logo : Les petits plats"
           />
         </a>
       </header>
 
       <main class="main">
-        <section class="search">
-          <div class="search__input-group">
+        <section>
+          <div class="recipe-search">
             <input
               type="text"
-              class="search__input"
+              class="recipe-search__input"
               placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..."
             />
-            <button class="search__button">
+            <button class="recipe-search__button">
               <img src="./assets/images/loupe.svg" alt="Go further" />
             </button>
           </div>
         </section>
 
-        <section class="tags">
+        <section class="recipe-tags">
           <!-- ARRAY OF TAGS EN JAVASCRIPT -->
         </section>
 
@@ -62,7 +59,6 @@
               data-value="Ingrédients"
               value="Ingrédients"
             />
-            <!-- UL et LI COMPONENT JAVASCRIPT  -->
           </div>
 
           <div class="filter__custom-select">
@@ -74,7 +70,6 @@
               data-value="Appareil"
               value="Appareil"
             />
-            <!-- UL et LI COMPONENT JAVASCRIPT  -->
           </div>
 
           <div class="filter__custom-select">
@@ -86,11 +81,9 @@
               data-value="Ustensiles"
               value="Ustensiles"
             />
-            <!-- UL et LI COMPONENT JAVASCRIPT  -->
           </div>
         </section>
         <section class="cards">
-          <!-- CARDS COMPONENT JAVASCRIPT DISPLAY CARDS-->
         </section>
       </main>
     </div>
