@@ -4,7 +4,7 @@ import { showListOfTags, tagsArray } from "./displayTags.js";
 import { isFilterReload } from "./openCloseFilters.js";
 import { deleteDuplicatesGoogled } from "./utils.js";
 
-export let theMillTurns = (recipes, filter) => {
+export let searchRecipe = (recipes, filter) => {
   let googledCards = [];
 
   for (let recipe of recipes) {
@@ -54,12 +54,12 @@ export let theMillTurns = (recipes, filter) => {
 
 // LISTEN INPUT BARRE DE RECHERCHE
 export let IS_GOOGLE = (recipes) => {
-  const takeIt = document.querySelector(".search__input");
+  const takeIt = document.querySelector(".recipe-search__input");
 
   takeIt.addEventListener("input", () => {
     // si le nombre de lettre dépasse 2 alors :  LANCER ALGO
     if (takeIt.value.length > 2) {
-      const googledRecipes = theMillTurns(recipes, takeIt.value);
+      const googledRecipes = searchRecipe(recipes, takeIt.value);
       const googledRecipesDistinct = deleteDuplicatesGoogled(googledRecipes);
       cards.DISPLAY_CARDS(googledRecipesDistinct);
       filters.DISPLAY_FILTERS(googledRecipesDistinct);

@@ -2,15 +2,15 @@ import { renderRecipes } from "./JS/api.js";
 import * as cards from "./JS/displayCards.js";
 import * as filters from "./JS/displayFilters.js";
 import * as closeFilters from "./JS/openCloseFilters.js";
-import * as google from "./JS/google.js";
+import * as searchRecipe from "./JS/searchRecipe.js";
 
 // RÉCUPÈRE LA DATA ET HYDRATE LES COMPOSANTS
 export const GET_RECIPES_HYDRATE = (renderRecipes.prototype.getAllRecipes =
   function (recipes) {
     cards.DISPLAY_CARDS(recipes);
     filters.DISPLAY_FILTERS(recipes);
-    google.IS_GOOGLE(recipes);
-    google.IS_TAGGED(recipes);
+    searchRecipe.IS_GOOGLE(recipes);
+    searchRecipe.IS_TAGGED(recipes);
     return recipes;
   });
 
@@ -27,5 +27,5 @@ buttons.forEach((btn) => {
 
 // clear input after reload
 window.onload = function () {
-  document.querySelector(".search__input").value = "";
+  document.querySelector(".recipe-search__input").value = "";
 };

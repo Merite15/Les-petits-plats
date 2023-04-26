@@ -1,6 +1,6 @@
 import * as cards from "./displayCards.js";
 import { DISPLAY_FILTERS } from "./displayFilters.js";
-import { theMillTurns } from "./google.js";
+import { searchRecipe  } from "./searchRecipe.js";
 import { isFilterReload } from "./openCloseFilters.js";
 import { deleteDuplicatesGoogled, windowLocationReload } from "./utils.js";
 import { DISPLAY_CARDS } from "./displayCards.js";
@@ -12,7 +12,7 @@ export var tagsArray = [
 ];
 
 // LISTE DES TAGS
-const listenToTags = function (data) {
+const listenTags  = function (data) {
   document.querySelectorAll(".tags__close").forEach((X) => {
     X.addEventListener("click", tagIsNone);
   });
@@ -25,7 +25,7 @@ const tagIsNone = (e) => {
   tagsArray.splice(ID, 1);
 
   if (tagsArray.length === 0) {
-    document.querySelector(".search__input").value = '';
+    document.querySelector(".recipe-search__input").value = '';
     DISPLAY_CARDS(originalRecipes[0]);
     isFilterReload(originalRecipes[0]);
   } else if (tagsArray.length >= 1) {
@@ -33,7 +33,7 @@ const tagIsNone = (e) => {
     tagReload.push(originalRecipes[0]);
     tagsArray.forEach((item) => {
       let distinctFilteredRecipes = deleteDuplicatesGoogled(
-        theMillTurns(tagReload[0], item.title)
+        searchRecipe(tagReload[0], item.title)
       );
       tagReload[0] = [...distinctFilteredRecipes];
     });
@@ -43,10 +43,10 @@ const tagIsNone = (e) => {
   showListOfTags(tagsArray);
 };
 
-export const listenFilter = (data, keywordlist) => {
+export const listenFilter = (data, keywords) => {
   originalRecipes.push(data);
 
-  for (const keyword of keywordlist) {
+  for (const keyword of keywords) {
     keyword.addEventListener("click", () => {
       let dataTitle = keyword.textContent;
       let dataColor = keyword.getAttribute("data-color");
@@ -67,7 +67,7 @@ export const listenFilter = (data, keywordlist) => {
         //ON FAIT LA RECHERCHE SUR CHAQUE TAG
         tagsArray.forEach((item) => {
           distinctFilteredRecipes = deleteDuplicatesGoogled(
-            theMillTurns(data, item.title)
+            searchRecipe(data, item.title)
           );
           data = [...distinctFilteredRecipes];
         });
@@ -110,5 +110,5 @@ export const showListOfTags = function (arrayOfTags, data) {
   });
   document.querySelector(".recipe-tags").innerHTML = tag_HTML;
 
-  listenToTags(data);
+  listenTags(data);
 };
