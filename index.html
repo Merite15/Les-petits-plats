@@ -26,21 +26,21 @@
     </header>
 
     <main class="main">
-      <section>
+      <div>
         <div class="recipe-search">
           <input type="text" class="recipe-search__input"
-            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..." />
+            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette...">
           <button class="recipe-search__button">
-            <img src="./assets/images/loupe.svg" alt="Go further" />
+            <img src="./assets/images/loupe.svg" alt="Go further" >
           </button>
         </div>
-      </section>
+      </div>
 
-      <section class="recipe-tags">
+      <div class="recipe-tags">
         <!-- ARRAY OF TAGS EN JAVASCRIPT -->
-      </section>
+      </div>
 
-      <section class="filter">
+      <div class="filter">
         <div class="filter__custom-select">
           <span class="filter__custom-arrow"></span>
           <input class="filter__select filter__select--primary" type="button" data-color="primary"
@@ -61,34 +61,14 @@
             value="Ustensiles">
 
         </div>
-      </section>
+      </div>
 
-      <section class="cards">
-      </section>
+      <div class="cards">
+      </div>
     </main>
   </div>
 
   <script src="./index.js" type="module"></script>
-  <script>
-    function PopupCentrer(page, largeur, hauteur, options) {
-      var top = (screen.height - hauteur) / 2;
-      var left = (screen.width - largeur) / 2;
-      window.open(
-        page,
-        "",
-        "top=" +
-        top +
-        ",left=" +
-        left +
-        ",width=" +
-        largeur +
-        ",height=" +
-        hauteur +
-        "," +
-        options
-      );
-    }
-  </script>
 </body>
 
 </html>
