@@ -1,93 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      content="Les petits plats, outil de recherche des recettes de cuisine"
-      name="description"
-    />
-    <meta
-      content="Les petits plats, outil de recherche des recettes de cuisine"
-      name="keywords"
-    />
-    <link rel="icon" href="./assets/images/icone.svg" />
 
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Les petits plats</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <a
-          href="#"
-        >
-          <img
-            src="./assets/images/logo.svg"
-            alt="Logo : Les petits plats"
-          />
-        </a>
-      </header>
+<head>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="Les petits plats, outil de recherche des recettes de cuisine" name="description" >
+  <meta content="Les petits plats, outil de recherche des recettes de cuisine" name="keywords" >
+  <link rel="icon" href="./assets/images/icone.svg" >
 
-      <main class="main">
-        <section>
-          <div class="recipe-search">
-            <input
-              type="text"
-              class="recipe-search__input"
-              placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..."
-            />
-            <button class="recipe-search__button">
-              <img src="./assets/images/loupe.svg" alt="Go further" />
-            </button>
-          </div>
-        </section>
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css" >
+  <title>Les petits plats</title>
+</head>
 
-        <section class="recipe-tags">
-          <!-- ARRAY OF TAGS EN JAVASCRIPT -->
-        </section>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <a href="#">
+        <img src="./assets/images/logo.svg" alt="Logo : Les petits plats">
+      </a>
+    </header>
 
-        <section class="filter">
-          <div class="filter__custom-select">
-            <span class="filter__custom-arrow"></span>
-            <input
-              class="filter__select filter__select--primary"
-              type="button"
-              data-color="primary"
-              data-value="Ingrédients"
-              value="Ingrédients"
-            />
-          </div>
+    <main class="main">
+      <div>
+        <div class="recipe-search">
+          <input type="text" class="recipe-search__input"
+            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette...">
+          <button class="recipe-search__button">
+            <img src="./assets/images/loupe.svg" alt="Go further">
+          </button>
+        </div>
+      </div>
 
-          <div class="filter__custom-select">
-            <span class="filter__custom-arrow"></span>
-            <input
-              class="filter__select filter__select--success"
-              type="button"
-              data-color="success"
-              data-value="Appareil"
-              value="Appareil"
-            />
-          </div>
+      <div class="recipe-tags">
+        <!-- ARRAY OF TAGS EN JAVASCRIPT -->
+      </div>
 
-          <div class="filter__custom-select">
-            <span class="filter__custom-arrow"></span>
-            <input
-              class="filter__select filter__select--danger"
-              type="button"
-              data-color="danger"
-              data-value="Ustensiles"
-              value="Ustensiles"
-            />
-          </div>
-        </section>
-        <section class="cards">
-        </section>
-      </main>
-    </div>
+      <div class="filter">
+        <div class="filter__custom-select">
+          <span class="filter__custom-arrow"></span>
+          <input class="filter__select filter__select--primary" type="button" data-color="primary"
+            data-value="Ingrédients" value="Ingrédients" >
+        </div>
 
-    <script src="./index.js" type="module"></script>
-  </body>
+        <div class="filter__custom-select">
+          <span class="filter__custom-arrow"></span>
+          <input class="filter__select filter__select--success" type="button" data-color="success" data-value="Appareil"
+            value="Appareil" >
+        </div>
+
+        <div class="filter__custom-select">
+          <span class="filter__custom-arrow"></span>
+          <input class="filter__select filter__select--danger" type="button" data-color="danger" data-value="Ustensiles"
+            value="Ustensiles" >
+        </div>
+      </div>
+      <div class="cards">
+      </div>
+    </main>
+  </div>
+
+  <script src="./index.js" type="module"></script>
+</body>
+
 </html>
