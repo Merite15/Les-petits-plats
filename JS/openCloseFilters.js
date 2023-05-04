@@ -67,11 +67,9 @@ export const isFilterReload = (renderRecipes.prototype.isFilterClosed = (
     if (filter.classList.contains("filter__show")) {
       let btn = filter.previousElementSibling;
       let btnvalue = btn.getAttribute("value");
-      // console.log(btn, btnvalue);
 
       // SUPPRESSION DES PRÉCÉDENTES UL CONTENANT LES LI
       document.querySelectorAll(".filter__custom-menu").forEach((ul) => {
-        // console.log(ul);
         ul.remove();
       });
       // HYDRATE LES LI AVEC LA NOUVELLE RECHERCHE

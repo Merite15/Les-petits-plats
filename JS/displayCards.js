@@ -15,23 +15,20 @@ export const DISPLAY_CARDS = (renderRecipes.prototype.displayCards = function (
   </div>`
     );
   } else {
-    // to remove the message
+    // remove message
     if (document.querySelector(".cards__no-recipes") && recipes != 0) {
       document.querySelector(".cards__no-recipes").remove();
     }
   }
 
   recipes.forEach((recipe) => {
-    // console.log(recipe);
     let listCard_HTML = "";
 
     recipe.ingredients.map((elt) => {
       listCard_HTML += `<li class="card__ingredient">
-          <span class="card__ingredient--bold">${
-            elt.ingredient ? capitalize(elt.ingredient).trim() : ""
-          }</span>  ${elt.quantity ? elt.quantity.toString().trim() : ""} ${
-        elt.unit ? elt.unit.toLowerCase().trim() : ""
-      }
+          <span class="card__ingredient--bold">${elt.ingredient ? capitalize(elt.ingredient).trim() : ""
+        }</span>  ${elt.quantity ? elt.quantity.toString().trim() : ""} ${elt.unit ? elt.unit.toLowerCase().trim() : ""
+        }
          </li>`;
 
       return listCard_HTML;

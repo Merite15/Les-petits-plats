@@ -39,6 +39,10 @@ const tagIsNone = (e) => {
     cards.DISPLAY_CARDS(tagReload[0]);
   }
   showListOfTags(tagsArray);
+
+  if (tagsArray.length === 0) {
+    DISPLAY_CARDS(originalRecipes[0]);
+  }
 };
 
 export const listenFilter = (data, keywords) => {
