@@ -1,6 +1,6 @@
 
 
-// MÉLANGER LES ELEMENTS D'UN TABLEAU
+// Mélanger les elements du tableau
 export const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
@@ -18,7 +18,7 @@ export const shuffle = (array) => {
   return array;
 };
 
-// SUPPRIMER LES DOUBLONS D'UN TABLEAU
+// Supprimer les doublons
 export const deleteDuplicates = (array) => {
   let cleanDuplicate = [];
   array.forEach((item) => {
@@ -27,7 +27,7 @@ export const deleteDuplicates = (array) => {
   });
 };
 
-// METTRE LA PREMIERE LETTRE EN LETTRE CAPITALE
+// Mettre la premiere lettre en capital
 export const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
@@ -36,7 +36,7 @@ export const capitalize = (str) => {
 export const windowLocationReload = () => {
 };
 
-// CLOSE TAGS
+// Fermer les tags
 export const tagIsNoneSuccess = () => {
   document.getElementsByClassName("tags__item--success").style.display = "none";
 };
@@ -54,3 +54,7 @@ export const deleteDuplicatesGoogled = (array) => {
   });
   return cleanDuplicate;
 };
+
+export const toLowercase = (str) => {
+  return str.toLowerCase().trim()
+}

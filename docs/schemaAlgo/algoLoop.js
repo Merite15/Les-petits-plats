@@ -1,12 +1,3 @@
-// BOUCLE for...of
-
-// Les différences entre for...of et for...in
-// Les deux instructions for...in et for...of permettent de parcourir un ensemble. Mais elles ne parcourent pas le même ensemble.
-
-// L'instruction for...in permet de parcourir les propriétés énumérables d'un objet dans un ordre arbitraire.
-
-// L'instruction for...of permet quant à elle de parcourir les données contenues dans l'objet itérable visé.
-
 let filterLoop = "bol";
 
 const recipesLoop = [
@@ -1787,12 +1778,10 @@ const recipesLoop = [
   },
 ];
 
-let theMillTurnsLoop = (recipes, filter) => {
-  //   console.log(recipes, filter);
-  let googledCards = [];
+let searchRecipeLoop = (recipes, filter) => {
+  let searchedCards = [];
 
   for (let recipe of recipes) {
-    // console.log(recipe);
     if (
       // une recette ?
       recipe.name.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) >
@@ -1807,8 +1796,7 @@ let theMillTurnsLoop = (recipes, filter) => {
         .trim()
         .indexOf(filter.toLowerCase().trim()) > -1
     ) {
-      googledCards.push(recipe);
-      //   console.log(cards);
+      searchedCards.push(recipe);
       continue;
     }
     // un ustensil ?
@@ -1816,7 +1804,7 @@ let theMillTurnsLoop = (recipes, filter) => {
       if (
         ustensil.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) > -1
       ) {
-        googledCards.push(recipe);
+        searchedCards.push(recipe);
         break;
       }
     }
@@ -1829,32 +1817,26 @@ let theMillTurnsLoop = (recipes, filter) => {
           .trim()
           .indexOf(filter.toLowerCase().trim()) > -1
       ) {
-        googledCards.push(recipe);
+        searchedCards.push(recipe);
         break;
       }
     }
   }
-  //   console.log(cards);
-  return googledCards;
+  return searchedCards;
 };
 
 let ingredientsArray = (recipes, filter) => {
-  // console.log(recipes);
   let distinctIngredients = [];
   let filterFilter = filter.toLowerCase().trim();
 
   for (const recipe of recipes) {
-    // console.log(recipe);
     for (const ingredient of recipe.ingredients) {
       let currentIngredient = ingredient.ingredient.toLowerCase().trim();
-      // console.log(currentIngredient);
       if (distinctIngredients.length === 0) {
         distinctIngredients.push(currentIngredient);
-        // console.log(ingredients);
       } else {
         let isIn = false;
         for (const itemInIngredients of distinctIngredients) {
-          // console.log(itemInIngredients);
           if (itemInIngredients === currentIngredient) {
             isIn = true;
           }
@@ -1866,24 +1848,19 @@ let ingredientsArray = (recipes, filter) => {
     }
   }
 
-  // SI RECHERCHE DANS INPUT....
+  // Presence de la recherche
   if (filter) {
-    // console.log(
-    //   distinctIngredients.filter((ingredient) =>
-    //     ingredient.includes(filter.toLowerCase().trim())
-    //   )
-    // );
     return distinctIngredients.filter((ingredient) =>
       ingredient.includes(filterFilter.toLowerCase().trim())
     );
   }
-  // SANS RECHERCHE
+  // Manque de recherche
   return distinctIngredients;
 };
 
 console.log(
-  theMillTurnsLoop(recipesLoop, filterLoop),
+  searchRecipeLoop(recipesLoop, filterLoop),
   ingredientsArray(recipesLoop, "pomme")
 );
-theMillTurnsLoop(recipesLoop, filterLoop);
+searchRecipeLoop(recipesLoop, filterLoop);
 ingredientsArray(recipesLoop, filterLoop);

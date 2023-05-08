@@ -2,36 +2,38 @@ import * as cards from "./displayCards.js";
 import * as filters from "./displayFilters.js";
 import { showListOfTags, tagsArray } from "./displayTags.js";
 import { isFilterReload } from "./openCloseFilters.js";
-import { deleteDuplicatesGoogled } from "./utils.js";
+import { deleteDuplicatesGoogled, toLowercase } from "./utils.js";
 
 export let searchRecipe = (recipes, filter) => {
-  let googledCards = [];
+  let searchedCards = [];
+
+  const filterText = toLowercase(filter);
 
   for (let recipe of recipes) {
     if (
       // une recette ?
-      recipe.name.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) >
+      recipe.name.toLowerCase().trim().indexOf(filterText) >
         -1 ||
       recipe.description
         .toLowerCase()
         .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1 ||
+        .indexOf(filterText) > -1 ||
       // un appareil ?
       recipe.appliance
         .toLowerCase()
         .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1
+        .indexOf(filterText) > -1
     ) {
-      googledCards.push(recipe);
+      searchedCards.push(recipe);
   
       continue;
     }
     // un ustensil ?
     for (let ustensil of recipe.ustensils) {
       if (
-        ustensil.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) > -1
+        ustensil.toLowerCase().trim().indexOf(filterText) > -1
       ) {
-        googledCards.push(recipe);
+        searchedCards.push(recipe);
         break;
       }
     }
@@ -44,31 +46,30 @@ export let searchRecipe = (recipes, filter) => {
           .trim()
           .indexOf(filter.toLowerCase().trim()) > -1
       ) {
-        googledCards.push(recipe);
+        searchedCards.push(recipe);
         break;
       }
     }
   }
-  return googledCards;
+  return searchedCards;
 };
 
-// LISTEN INPUT BARRE DE RECHERCHE
-export let IS_GOOGLE = (recipes) => {
+// Barre de recherche
+export let IS_SEARCHED = (recipes) => {
   const takeIt = document.querySelector(".recipe-search__input");
 
   takeIt.addEventListener("input", () => {
     // si le nombre de lettre dépasse 2 alors :  LANCER ALGO
     if (takeIt.value.length > 2) {
-      const googledRecipes = searchRecipe(recipes, takeIt.value);
-      const googledRecipesDistinct = deleteDuplicatesGoogled(googledRecipes);
-      cards.DISPLAY_CARDS(googledRecipesDistinct);
-      filters.DISPLAY_FILTERS(googledRecipesDistinct);
+      const searchedRecipes = searchRecipe(recipes, takeIt.value);
+      const searchedRecipesDistinct = deleteDuplicatesGoogled(searchedRecipes);
+      cards.DISPLAY_CARDS(searchedRecipesDistinct);
+      filters.DISPLAY_FILTERS(searchedRecipesDistinct);
       isFilterReload(recipes);
     } else {
       // SINON TABLEAU DES RECETTES
       cards.DISPLAY_CARDS(recipes);
       isFilterReload(recipes);
-      // ON VIDE LE TABLEAU DEStags
 
       while (tagsArray.length > 0) {
         tagsArray.pop();
@@ -84,9 +85,9 @@ export let IS_GOOGLE = (recipes) => {
   });
 };
 
-// LISTEN FOREACH INPUT FILTER
+// Liste des filtres
 export let IS_TAGGED = (recipes) => {
-  // LISTEN INPUT BARRE DE RECHERCHE DU FILTRE
+  // Recherche sur un filtre
   const takeFilter = document.querySelectorAll(".filter__select");
 
   takeFilter.forEach((input) => {
@@ -94,7 +95,7 @@ export let IS_TAGGED = (recipes) => {
       e.preventDefault();
       e.stopPropagation();
 
-      // ON VIDE LE TABLEAU DES TAGS
+      // Tableau des tags
       while (tagsArray.length > 0) {
         tagsArray.pop();
       }

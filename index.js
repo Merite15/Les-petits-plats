@@ -9,7 +9,7 @@ export const GET_RECIPES_HYDRATE = (renderRecipes.prototype.getAllRecipes =
   function (recipes) {
     cards.DISPLAY_CARDS(recipes);
     filters.DISPLAY_FILTERS(recipes);
-    searchRecipe.IS_GOOGLE(recipes);
+    searchRecipe.IS_SEARCHED(recipes);
     searchRecipe.IS_TAGGED(recipes);
     return recipes;
   });

@@ -1,9 +1,3 @@
-// Higher Order Functions in JavaScript
-
-// Vitesse et performance :
-
-// La methode map() pour modifier, alterner ou utiliser les données, est préférable car elle renvoie un nouveau tableau avec les données transformées.
-
 let filterFunc = "bol";
 
 const recipesFunc = [
@@ -1785,9 +1779,7 @@ const recipesFunc = [
 ];
 
 // NEW SET : distinct INGREDIENTS
-let displayFilterIngredients = function (data, filter) {
-  // console.log(filter);
-
+let displayIngredient = function (data, filter) {
   const distinctIngredients = [
     ...new Set(
       data
@@ -1803,11 +1795,6 @@ let displayFilterIngredients = function (data, filter) {
 
   // SI RECHERCHE DANS INPUT....
   if (filter) {
-    // console.log(
-    //   distinctIngredients.filter((ingredient) =>
-    //     ingredient.includes(filter.toLowerCase().trim())
-    //   )
-    // );
     return distinctIngredients.filter((ingredient) =>
       ingredient.includes(filter.toLowerCase().trim())
     );
@@ -1817,8 +1804,8 @@ let displayFilterIngredients = function (data, filter) {
 };
 
 // NEW SET : distinct APPLIANCE
-let displayFilterAppliance = function (data, filter) {
-  // console.log(data);
+let displayDevice = function (data, filter) {
+
   const distinctAppliance = [
     ...new Set(
       data.map((recipe) => recipe.appliance.toLowerCase().trim()).sort()
@@ -1832,13 +1819,12 @@ let displayFilterAppliance = function (data, filter) {
     );
   }
   // SANS RECHERCHE
-  // console.log(distinctAppliance);
   return distinctAppliance;
 };
 
 // NEW SET : distinct USTENSILS
-let displayFilterUstensils = function (data, filter) {
-  // console.log(data);
+let displayUstensils = function (data, filter) {
+
   const distinctUstensils = [
     ...new Set(
       data
@@ -1849,69 +1835,40 @@ let displayFilterUstensils = function (data, filter) {
         .sort()
     ),
   ];
-  // SI RECHERCHE DANS INPUT....
+  // Presence de la recherche dans l'input
   if (filter) {
     return distinctUstensils.filter((ustensil) =>
       ustensil.includes(filter.toLowerCase().trim())
     );
   }
-  // SANS RECHERCHE
+  // Manque de recherche
   return distinctUstensils;
 };
 
-let theMillTurnsFunc = (recipes, filter) => {
-  //   console.log(recipes, filter);
-  let googledCards = [];
+let searchRecipe = (recipes, filter) => {
+  let searchedCards = recipes.filter((recipe) => {
+    const lowerCaseFilter = filter.toLowerCase().trim();
 
-  recipes.map((recipe) => {
-    // console.log(recipe);
-    if (
-      // une recette ?
-      recipe.name.toLowerCase().trim().includes(filter.toLowerCase().trim()) ||
-      recipe.description
-        .toLowerCase()
-        .trim()
-        .includes(filter.toLowerCase().trim()) ||
-      // un appareil ?
-      recipe.appliance
-        .toLowerCase()
-        .trim()
-        .includes(filter.toLowerCase().trim())
-    ) {
-      googledCards.push(recipe);
-      //   console.log(cards);
-    }
-    // un ustensil ?
-    recipe.ustensils.map((ustensil) => {
-      if (ustensil.toLowerCase().trim().includes(filter.toLowerCase().trim())) {
-        googledCards.push(recipe);
-      }
-    });
+    const nameSearch = recipe.name.toLowerCase().includes(lowerCaseFilter);
+    const descriptionSearch = recipe.description.toLowerCase().includes(lowerCaseFilter);
+    const deviceSearch = recipe.appliance.toLowerCase().includes(lowerCaseFilter);
 
-    // un ingredient ?
-    recipe.ingredients.map((ingredient) => {
-      if (
-        ingredient.ingredient
-          .toLowerCase()
-          .trim()
-          .includes(filter.toLowerCase().trim())
-      ) {
-        googledCards.push(recipe);
-      }
-    });
+    const utensilSearch = recipe.ustensils.some((ustensil) =>
+      ustensil.toLowerCase().includes(lowerCaseFilter)
+    );
+
+    const ingredientSearch = recipe.ingredients.some((ingredient) =>
+      ingredient.ingredient.toLowerCase().includes(lowerCaseFilter)
+    );
+
+    return nameSearch || descriptionSearch || deviceSearch || utensilSearch || ingredientSearch;
   });
-  //   console.log(cards);
-  return googledCards;
+
+  return searchedCards;
 };
 
-console.log(
-  theMillTurnsFunc(recipesFunc, filterFunc),
-  displayFilterUstensils(recipesFunc, filterFunc),
-  displayFilterAppliance(recipesFunc, filterFunc),
-  displayFilterIngredients(recipesFunc, filterFunc)
-);
 
-theMillTurnsFunc(recipesFunc, filterFunc);
-displayFilterUstensils(recipesFunc, filterFunc);
-displayFilterAppliance(recipesFunc, filterFunc);
-displayFilterIngredients(recipesFunc, filterFunc);
+searchRecipe(recipesFunc, filterFunc);
+displayUstensils(recipesFunc, filterFunc);
+displayDevice(recipesFunc, filterFunc);
+displayIngredient(recipesFunc, filterFunc);
