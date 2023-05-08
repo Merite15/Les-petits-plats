@@ -1779,7 +1779,7 @@ const recipesLoop = [
 ];
 
 let searchRecipeLoop = (recipes, filter) => {
-  let googledCards = [];
+  let searchedCards = [];
 
   for (let recipe of recipes) {
     if (
@@ -1796,8 +1796,7 @@ let searchRecipeLoop = (recipes, filter) => {
         .trim()
         .indexOf(filter.toLowerCase().trim()) > -1
     ) {
-      googledCards.push(recipe);
-      //   console.log(cards);
+      searchedCards.push(recipe);
       continue;
     }
     // un ustensil ?
@@ -1805,7 +1804,7 @@ let searchRecipeLoop = (recipes, filter) => {
       if (
         ustensil.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) > -1
       ) {
-        googledCards.push(recipe);
+        searchedCards.push(recipe);
         break;
       }
     }
@@ -1818,13 +1817,12 @@ let searchRecipeLoop = (recipes, filter) => {
           .trim()
           .indexOf(filter.toLowerCase().trim()) > -1
       ) {
-        googledCards.push(recipe);
+        searchedCards.push(recipe);
         break;
       }
     }
   }
-  //   console.log(cards);
-  return googledCards;
+  return searchedCards;
 };
 
 let ingredientsArray = (recipes, filter) => {
