@@ -10,6 +10,7 @@ export const GET_RECIPES = (renderRecipes.prototype.getAllRecipes =
     cards.DISPLAY_CARDS(recipes);
     filters.DISPLAY_FILTERS(recipes);
     searchRecipe.IS_SEARCHED(recipes);
+    // recherche effectuée à partir d'un tag
     searchRecipe.IS_TAGGED(recipes);
     return recipes;
   });
@@ -27,7 +28,7 @@ buttons.forEach((btn) => {
 });
 
 // Effacer l'entrée après le rechargement
-window.onload = function() {
+window.onload = function () {
   document.querySelector(".recipe-search__input").value = '';
-  }
+}
 

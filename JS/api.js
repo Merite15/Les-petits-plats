@@ -8,7 +8,6 @@ export const GET_RECIPES = (async () => {
     })
     .then((data) => {
       index.GET_RECIPES(data.recipes);
-
     })
     .catch((error) => {
       error.message;

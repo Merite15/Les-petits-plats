@@ -3,51 +3,34 @@ import * as filters from "./displayFilters.js";
 import { showListOfTags, tagsArray } from "./displayTags.js";
 import { isFilterReload } from "./openCloseFilters.js";
 import { removeDuplicatedSearch } from "./utils.js";
+import { toLowercase } from "./utils.js";
 
 export let searchRecipe = (recipes, filter) => {
-  let searchCards = [];
+  let searchCards = recipes.filter((recipe) => {
+    const filterText = toLowercase(filter);
 
-  recipes.map((recipe) => {
-    if (
-      // une recette ?
-      recipe.name.toLowerCase().trim().includes(filter.toLowerCase().trim()) ||
-      recipe.description
-        .toLowerCase()
-        .trim()
-        .includes(filter.toLowerCase().trim()) ||
-      // un appareil ?
-      recipe.appliance
-        .toLowerCase()
-        .trim()
-        .includes(filter.toLowerCase().trim())
-    ) {
-      searchCards.push(recipe);
-    }
+    // Vérification du nom de la recette, de la description et de l'appareil
+    const nameSearch = recipe.name.toLowerCase().includes(filterText);
+    const descriptionSearch = recipe.description.toLowerCase().includes(filterText);
+    const deviceSearch = recipe.appliance.toLowerCase().includes(filterText);
 
-    // un ustensil ?
-    recipe.ustensils.filter((elt) => {
-      if (elt.toLowerCase().includes(filter.toLowerCase())) {
-        searchCards.push(recipe);
-      }
-    });
+    // Vérification des ustensiles
+    const utensilMatching = recipe.ustensils.some((utensil) =>
+      utensil.toLowerCase().includes(filter.toLowerCase())
+    );
 
-    // un ingredient ?
-    recipe.ingredients.map((ingredient) => {
-      if (
-        ingredient.ingredient
-          .toLowerCase()
-          .trim()
-          .includes(filter.toLowerCase().trim())
-      ) {
+    // Vérification des ingrédients
+    const ingredientMatching = recipe.ingredients.some((ingredient) =>
+      ingredient.ingredient.toLowerCase().includes(filterText)
+    );
 
-        searchCards.push(recipe);
-      }
-    });
+    return nameSearch || descriptionSearch || deviceSearch || utensilMatching || ingredientMatching;
   });
+
   return searchCards;
 };
 
-// LISTEN INPUT BARRE DE RECHERCHE
+// Un élément present dans la barre de recherche
 export let IS_SEARCHED = (recipes) => {
   const takeIt = document.querySelector(".recipe-search__input");
 
@@ -92,16 +75,16 @@ export let IS_SEARCHED = (recipes) => {
   });
 };
 
-// LISTEN FOREACH INPUT FILTER
+// Recherche sur les filtres
 export let IS_TAGGED = (recipes) => {
-  // LISTEN INPUT BARRE DE RECHERCHE DU FILTRE
+  // Barre de recherche des filtres
   const takeFilter = document.querySelectorAll(".filter__select");
 
   takeFilter.forEach((input) => {
     input.addEventListener("input", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      // ON VIDE LE TABLEAU DES TAGS
+      // Vider le tableau des tags
       while (tagsArray.length > 0) {
         tagsArray.pop();
       }

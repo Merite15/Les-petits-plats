@@ -1,4 +1,4 @@
-// MÉLANGER LES ELEMENTS D'UN TABLEAU
+// Mélanger les elements d'un tableau
 export const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
@@ -16,7 +16,7 @@ export const shuffle = (array) => {
   return array;
 };
 
-// SUPPRIMER LES DOUBLONS D'UN TABLEAU
+// Enlever les doublons du tableau
 export const deleteDuplicates = (array) => {
   let cleanDuplicate = [];
   array.forEach((item) => {
@@ -30,11 +30,11 @@ export const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-// RELOAD window.location.reload
+// Relance la fenêtre
 export const windowLocationReload = () => {
 };
 
-// CLOSE TAGS
+// Fermer les tags
 export const tagIsNoneSuccess = () => {
   document.getElementsByClassName("tags__item--success").style.display = "none";
 };
@@ -52,3 +52,7 @@ export const removeDuplicatedSearch = (array) => {
   });
   return cleanDuplicate;
 };
+
+export const toLowercase = (str) => {
+  return str.toLowerCase().trim()
+}
