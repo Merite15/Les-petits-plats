@@ -4,10 +4,10 @@ import { showListOfTags, tagsArray } from "./displayTags.js";
 import { isFilterReload } from "./openCloseFilters.js";
 import { deleteDuplicatesGoogled, toLowercase } from "./utils.js";
 
-export let searchRecipe = (recipes, filter) => {
+export let searchRecipe = (recipes, searchText) => {
   let searchedCards = [];
 
-  const filterText = toLowercase(filter);
+  const filterText = toLowercase(searchText);
 
   for (let recipe of recipes) {
     if (
@@ -26,7 +26,7 @@ export let searchRecipe = (recipes, filter) => {
         ingredient.ingredient
           .toLowerCase()
           .trim()
-          .indexOf(filter.toLowerCase().trim()) > -1
+          .indexOf(filterText) > -1
       ) {
         searchedCards.push(recipe);
         break;

@@ -1811,9 +1811,9 @@ let searchRecipeLoop = (recipes, searchText) => {
   return searchedCards;
 };
 
-let ingredientsArray = (recipes, filter) => {
+let ingredientsArray = (recipes, searchText) => {
   let distinctIngredients = [];
-  let filterFilter = filter.toLowerCase().trim();
+  let searchLowText = searchText.toLowerCase().trim();
 
   for (const recipe of recipes) {
     for (const ingredient of recipe.ingredients) {
@@ -1835,9 +1835,9 @@ let ingredientsArray = (recipes, filter) => {
   }
 
   // Presence de la recherche
-  if (filter) {
+  if (searchText) {
     return distinctIngredients.filter((ingredient) =>
-      ingredient.includes(filterFilter.toLowerCase().trim())
+      ingredient.includes(searchLowText)
     );
   }
   // Manque de recherche
