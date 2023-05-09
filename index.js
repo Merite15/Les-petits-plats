@@ -18,12 +18,13 @@ export const GET_RECIPES_HYDRATE = (renderRecipes.prototype.getAllRecipes =
 let buttons = document.querySelectorAll(".filter__select");
 let buttonValue;
 buttons.forEach((btn) => {
-  // OPEN CLOSE FILTER
+  // Display filter
   btn.addEventListener("click", () => {
     buttonValue = btn.getAttribute("value");
     closeFilters.isFiltersInteractive(btn, buttonValue);
   });
 });
+
 
 // clear input after reload
 window.onload = function () {
