@@ -1778,35 +1778,23 @@ const recipesLoop = [
   },
 ];
 
-let searchRecipeLoop = (recipes, filter) => {
+let searchRecipeLoop = (recipes, searchText) => {
   let searchedCards = [];
 
   for (let recipe of recipes) {
     if (
       // une recette ?
-      recipe.name.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) >
-        -1 ||
+      recipe.name
+        .toLowerCase()
+        .trim()
+        .indexOf(searchText.toLowerCase().trim()) > -1 ||
       recipe.description
         .toLowerCase()
         .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1 ||
-      // un appareil ?
-      recipe.appliance
-        .toLowerCase()
-        .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1
+        .indexOf(filter.toLowerCase().trim()) > -1 
     ) {
       searchedCards.push(recipe);
       continue;
-    }
-    // un ustensil ?
-    for (let ustensil of recipe.ustensils) {
-      if (
-        ustensil.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) > -1
-      ) {
-        searchedCards.push(recipe);
-        break;
-      }
     }
 
     // un ingredient ?
@@ -1825,9 +1813,9 @@ let searchRecipeLoop = (recipes, filter) => {
   return searchedCards;
 };
 
-let ingredientsArray = (recipes, filter) => {
+let ingredientsArray = (recipes, searchText) => {
   let distinctIngredients = [];
-  let filterFilter = filter.toLowerCase().trim();
+  let lowTextSearch = searchText.toLowerCase().trim();
 
   for (const recipe of recipes) {
     for (const ingredient of recipe.ingredients) {
@@ -1849,9 +1837,9 @@ let ingredientsArray = (recipes, filter) => {
   }
 
   // Presence de la recherche
-  if (filter) {
+  if (searchText) {
     return distinctIngredients.filter((ingredient) =>
-      ingredient.includes(filterFilter.toLowerCase().trim())
+      ingredient.includes(lowTextSearch.toLowerCase().trim())
     );
   }
   // Manque de recherche

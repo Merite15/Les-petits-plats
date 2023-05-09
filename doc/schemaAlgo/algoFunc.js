@@ -1779,7 +1779,7 @@ const recipesFunc = [
 ];
 
 // NEW SET : distinct INGREDIENTS
-let displayIngredient = function (data, filter) {
+let displayIngredient = function (data, searchText) {
   const distinctIngredients = [
     ...new Set(
       data
@@ -1794,9 +1794,9 @@ let displayIngredient = function (data, filter) {
   ];
 
   // SI RECHERCHE DANS INPUT....
-  if (filter) {
+  if (searchText) {
     return distinctIngredients.filter((ingredient) =>
-      ingredient.includes(filter.toLowerCase().trim())
+      ingredient.includes(searchText.toLowerCase().trim())
     );
   }
   // SANS RECHERCHE
@@ -1804,7 +1804,7 @@ let displayIngredient = function (data, filter) {
 };
 
 // NEW SET : distinct APPLIANCE
-let displayDevice = function (data, filter) {
+let displayDevice = function (data, searchText) {
 
   const distinctAppliance = [
     ...new Set(
@@ -1813,9 +1813,9 @@ let displayDevice = function (data, filter) {
   ];
 
   // SI RECHERCHE DANS INPUT....
-  if (filter) {
+  if (searchText) {
     return distinctAppliance.filter((appliance) =>
-      appliance.includes(filter.toLowerCase().trim())
+      appliance.includes(searchText.toLowerCase().trim())
     );
   }
   // SANS RECHERCHE
@@ -1823,7 +1823,7 @@ let displayDevice = function (data, filter) {
 };
 
 // NEW SET : distinct USTENSILS
-let displayUstensils = function (data, filter) {
+let displayUstensils = function (data, searchText) {
 
   const distinctUstensils = [
     ...new Set(
@@ -1836,26 +1836,21 @@ let displayUstensils = function (data, filter) {
     ),
   ];
   // Presence de la recherche dans l'input
-  if (filter) {
+  if (searchText) {
     return distinctUstensils.filter((ustensil) =>
-      ustensil.includes(filter.toLowerCase().trim())
+      ustensil.includes(searchText.toLowerCase().trim())
     );
   }
   // Manque de recherche
   return distinctUstensils;
 };
 
-let searchRecipe = (recipes, filter) => {
+let searchRecipe = (recipes, searchText) => {
   let searchedCards = recipes.filter((recipe) => {
-    const lowerCaseFilter = filter.toLowerCase().trim();
+    const lowerCaseFilter = searchText.toLowerCase().trim();
 
     const nameSearch = recipe.name.toLowerCase().includes(lowerCaseFilter);
     const descriptionSearch = recipe.description.toLowerCase().includes(lowerCaseFilter);
-    const deviceSearch = recipe.appliance.toLowerCase().includes(lowerCaseFilter);
-
-    const utensilSearch = recipe.ustensils.some((ustensil) =>
-      ustensil.toLowerCase().includes(lowerCaseFilter)
-    );
 
     const ingredientSearch = recipe.ingredients.some((ingredient) =>
       ingredient.ingredient.toLowerCase().includes(lowerCaseFilter)

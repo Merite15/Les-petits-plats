@@ -53,6 +53,5 @@ export const removeDuplicatedSearch = (array) => {
   return cleanDuplicate;
 };
 
-export const toLowercase = (str) => {
-  return str.toLowerCase().trim()
-}
+export const toLowercase = (str) => str.toLowerCase().trim()
+

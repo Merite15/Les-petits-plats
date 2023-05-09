@@ -2,29 +2,22 @@ import * as cards from "./displayCards.js";
 import * as filters from "./displayFilters.js";
 import { showListOfTags, tagsArray } from "./displayTags.js";
 import { isFilterReload } from "./openCloseFilters.js";
-import { removeDuplicatedSearch } from "./utils.js";
-import { toLowercase } from "./utils.js";
+import { removeDuplicatedSearch, toLowercase } from "./utils.js";
 
-export let searchRecipe = (recipes, filter) => {
+export let searchRecipe = (recipes, searchText) => {
   let searchCards = recipes.filter((recipe) => {
-    const filterText = toLowercase(filter);
+    const filterText = toLowercase(searchText);
 
     // Vérification du nom de la recette, de la description et de l'appareil
     const nameSearch = recipe.name.toLowerCase().includes(filterText);
     const descriptionSearch = recipe.description.toLowerCase().includes(filterText);
-    const deviceSearch = recipe.appliance.toLowerCase().includes(filterText);
-
-    // Vérification des ustensiles
-    const utensilMatching = recipe.ustensils.some((utensil) =>
-      utensil.toLowerCase().includes(filter.toLowerCase())
-    );
 
     // Vérification des ingrédients
     const ingredientMatching = recipe.ingredients.some((ingredient) =>
       ingredient.ingredient.toLowerCase().includes(filterText)
     );
 
-    return nameSearch || descriptionSearch || deviceSearch || utensilMatching || ingredientMatching;
+    return nameSearch || descriptionSearch  || ingredientMatching;
   });
 
   return searchCards;
