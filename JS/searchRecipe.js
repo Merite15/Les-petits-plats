@@ -7,13 +7,13 @@ import { deleteDuplicatesGoogled, toLowercase } from "./utils.js";
 export let searchRecipe = (recipes, searchText) => {
   let searchedCards = [];
 
-  const filterText = toLowercase(searchText);
+  const lowTextSearch = toLowercase(searchText);
 
   for (let recipe of recipes) {
     if (
       // une recette ?
-      recipe.name.toLowerCase().trim().indexOf(filterText) > -1 ||
-      recipe.description.toLowerCase().trim().indexOf(filterText) > -1
+      recipe.name.toLowerCase().trim().indexOf(lowTextSearch) > -1 ||
+      recipe.description.toLowerCase().trim().indexOf(lowTextSearch) > -1
     ) {
       searchedCards.push(recipe);
 
@@ -26,7 +26,7 @@ export let searchRecipe = (recipes, searchText) => {
         ingredient.ingredient
           .toLowerCase()
           .trim()
-          .indexOf(filterText) > -1
+          .indexOf(lowTextSearch) > -1
       ) {
         searchedCards.push(recipe);
         break;
