@@ -1805,7 +1805,6 @@ let displayIngredient = function (data, filter) {
 
 // NEW SET : distinct APPLIANCE
 let displayDevice = function (data, filter) {
-
   const distinctAppliance = [
     ...new Set(
       data.map((recipe) => recipe.appliance.toLowerCase().trim()).sort()
@@ -1824,7 +1823,6 @@ let displayDevice = function (data, filter) {
 
 // NEW SET : distinct USTENSILS
 let displayUstensils = function (data, filter) {
-
   const distinctUstensils = [
     ...new Set(
       data
@@ -1850,23 +1848,24 @@ let searchRecipe = (recipes, filter) => {
     const lowerCaseFilter = filter.toLowerCase().trim();
 
     const nameSearch = recipe.name.toLowerCase().includes(lowerCaseFilter);
-    const descriptionSearch = recipe.description.toLowerCase().includes(lowerCaseFilter);
-    const deviceSearch = recipe.appliance.toLowerCase().includes(lowerCaseFilter);
+    const descriptionSearch = recipe.description
+      .toLowerCase()
+      .includes(lowerCaseFilter);
 
-    const utensilSearch = recipe.ustensils.some((ustensil) =>
-      ustensil.toLowerCase().includes(lowerCaseFilter)
-    );
 
     const ingredientSearch = recipe.ingredients.some((ingredient) =>
       ingredient.ingredient.toLowerCase().includes(lowerCaseFilter)
     );
 
-    return nameSearch || descriptionSearch || deviceSearch || utensilSearch || ingredientSearch;
+    return (
+      nameSearch ||
+      descriptionSearch ||
+      ingredientSearch
+    );
   });
 
   return searchedCards;
 };
-
 
 searchRecipe(recipesFunc, filterFunc);
 displayUstensils(recipesFunc, filterFunc);

@@ -12,30 +12,12 @@ export let searchRecipe = (recipes, filter) => {
   for (let recipe of recipes) {
     if (
       // une recette ?
-      recipe.name.toLowerCase().trim().indexOf(filterText) >
-        -1 ||
-      recipe.description
-        .toLowerCase()
-        .trim()
-        .indexOf(filterText) > -1 ||
-      // un appareil ?
-      recipe.appliance
-        .toLowerCase()
-        .trim()
-        .indexOf(filterText) > -1
+      recipe.name.toLowerCase().trim().indexOf(filterText) > -1 ||
+      recipe.description.toLowerCase().trim().indexOf(filterText) > -1
     ) {
       searchedCards.push(recipe);
-  
+
       continue;
-    }
-    // un ustensil ?
-    for (let ustensil of recipe.ustensils) {
-      if (
-        ustensil.toLowerCase().trim().indexOf(filterText) > -1
-      ) {
-        searchedCards.push(recipe);
-        break;
-      }
     }
 
     // un ingredient ?

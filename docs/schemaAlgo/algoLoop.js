@@ -1778,35 +1778,21 @@ const recipesLoop = [
   },
 ];
 
-let searchRecipeLoop = (recipes, filter) => {
+let searchRecipeLoop = (recipes, searchText) => {
   let searchedCards = [];
 
   for (let recipe of recipes) {
     if (
       // une recette ?
-      recipe.name.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) >
+      recipe.name.toLowerCase().trim().indexOf(searchText.toLowerCase().trim()) >
         -1 ||
       recipe.description
         .toLowerCase()
         .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1 ||
-      // un appareil ?
-      recipe.appliance
-        .toLowerCase()
-        .trim()
-        .indexOf(filter.toLowerCase().trim()) > -1
+        .indexOf(searchText.toLowerCase().trim()) > -1
     ) {
       searchedCards.push(recipe);
       continue;
-    }
-    // un ustensil ?
-    for (let ustensil of recipe.ustensils) {
-      if (
-        ustensil.toLowerCase().trim().indexOf(filter.toLowerCase().trim()) > -1
-      ) {
-        searchedCards.push(recipe);
-        break;
-      }
     }
 
     // un ingredient ?
@@ -1815,7 +1801,7 @@ let searchRecipeLoop = (recipes, filter) => {
         ingredient.ingredient
           .toLowerCase()
           .trim()
-          .indexOf(filter.toLowerCase().trim()) > -1
+          .indexOf(searchText.toLowerCase().trim()) > -1
       ) {
         searchedCards.push(recipe);
         break;
