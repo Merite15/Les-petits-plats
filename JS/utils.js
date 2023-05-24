@@ -1,5 +1,3 @@
-
-
 // Mélanger les elements du tableau
 export const shuffle = (array) => {
   let currentIndex = array.length,
@@ -27,14 +25,10 @@ export const deleteDuplicates = (array) => {
   });
 };
 
-// Mettre la premiere lettre en capital
-export const capitalize = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
-
-// RELOAD window.location.reload
-export const windowLocationReload = () => {
-};
+// Mettre la premiere lettre en majuscule
+export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+// Relancer la fenêtre window
+export const windowLocationReload = () => {};
 
 // Fermer les tags
 export const tagIsNoneSuccess = () => {
@@ -55,4 +49,4 @@ export const deleteDuplicatesGoogled = (array) => {
   return cleanDuplicate;
 };
 
-export const toLowercase = (str) => str.toLowerCase().trim()
+export const toLowercase = (str) => str.toLowerCase().trim();
